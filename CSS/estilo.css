@@ -1,0 +1,22 @@
+header{
+}
+
+footer{
+	/*background-color:yellow;*/
+	height:80px;
+	padding:30px;
+}
+
+#content{
+	min-height:400px;
+	/*background-color:#d5d5d5;*/
+	border-top: 1px #337ab7 solid;
+	border-bottom: 1px #337ab7 solid;
+}
+#menu{
+	padding-top:30px;
+}
+
+#logo{
+	padding-top:15px;
+}
