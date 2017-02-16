@@ -84,17 +84,17 @@
 					</table>
 				</div>
 			<?php }else{ ?>
-			
-			<form>
+			<?= (isset($_GET['msg']))?$_GET['msg']:''?>
+			<form method="POST" action="aluno_valida.php">
 	
 				<label for="id" class="labelform"> ID </label>
-				<input type="text" name="ID" id="id" class="inputform" value="1"/> 
+				<input type="text" name="id" id="id" class="inputform" value=""/> 
 				
 				<label for="nome" class="labelform"> Nome </label>
-				<input type="text" name="nome" id="nome" class="inputform" value="joao"/> 
+				<input type="text" name="nome" id="nome" class="inputform" value=""/> 
 				
 				<label for="email" class="labelform"> E-mail </label>
-				<input type="text" name="email" id="email" class="inputform" value="joao@gmail.com"/> 
+				<input type="text" name="email" id="email" class="inputform" value=""/> 
 				<input type="submit" value="Cadastrar"/>
 				
 			</form>
