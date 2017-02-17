@@ -16,14 +16,18 @@ if(!$id){
 	$mensagem='Informe o e-mail';
 	header("location:/maestro/aluno_lista.php?msg=$mensagem&menu=aluno&formulario=1");
 }else{
-	var_dump($id);  	// false
-	var_dump($nome); 	//''
-	var_dump($email);	//''
+	//var_dump($id);  	// false
+	//var_dump($nome); 	//''
+	//var_dump($email);	//''
 	
 	$arquivo = array();
 	$fd = fopen ("arquivo_aluno.txt", "a");
-	fwrite	($fd, "$id;$nome;$email\n");
+	fwrite	($fd, "\n$id;$nome;$email");
 	fclose ($fd);
+	
+	$mensagem = 'Cadastro realizado com sucesso';
+	header("location:/maestro/aluno_lista.php?msg=$mensagem&menu=aluno&formulario=0");
+	
 }
 
 
@@ -65,9 +69,9 @@ if ($id!=null &&$nome!=null && $email!=null)
 	} else {
 		//armazenando os dados em um arquivo
 	}
-}else{
+	}else{
 	$mensagem='Informe os dados';
-header("location:/maestro/aluno_lista.php?msg=$mensagem&menu=aluno&formulario=1");
+	header("location:/maestro/aluno_lista.php?msg=$mensagem&menu=aluno&formulario=1");
 }
 */
 
