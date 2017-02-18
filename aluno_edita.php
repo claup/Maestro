@@ -49,7 +49,7 @@ if(!$id){
 	//fechar arquivo
 	fclose ( $ponteiroArquivo1 );
 		
-	$mensagem = 'Edição realizada com sucesso';
+	$mensagem = 'EdiÃ§Ã£o realizada com sucesso';
 	header("location:/maestro/aluno_lista.php?msg=$mensagem&menu=aluno&formulario=0");
 }
 
