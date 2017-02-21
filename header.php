@@ -43,6 +43,10 @@
 	class="<?=(isset($_GET['pagina']) && $_GET['pagina'] == 'sair')? 'active':''; ?>"><a
 	href="index.php?pagina=sair">Sair</a></li>
 
+<li role="presentation"
+	class="<?=(isset($_GET['pagina']) && $_GET['pagina'] == 'usuarios')? 'active':''; ?>"><a
+	href="index.php?pagina=usuarios">Sair</a></li>
+
 	</ul>
 	</div>
 	</div>

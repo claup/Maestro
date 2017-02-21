@@ -27,8 +27,8 @@ if(!$id){
 	header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=1");
 }else{
 	//var_dump($id);  	// false
-	//var_dump($nome); 	//''
-	//var_dump($email);	//''
+	//var_dump($nome); 	// ''
+	//var_dump($email);	// ''
 
 	$arquivo = array();
 	$fd = fopen ("arquivo_aluno.txt", "a");
@@ -37,9 +37,7 @@ if(!$id){
 
 	$mensagem = 'Cadastro realizado com sucesso';
 	header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=0");
-
 }
-
 
 
 
@@ -80,7 +78,7 @@ if (isset ($_POST['id']))
  }
 
  if ($id!=null &&$nome!=null && $email!=null)
- {
+{
  if (trim($id) == '' OR !is_int($id)) {
  $mensagem='Informe o id';
  header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=1");
@@ -88,7 +86,7 @@ if (isset ($_POST['id']))
  $mensagem='Informe o nome';
  header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=1");
  } elseif (trim($email) == '' OR !is_string($email)) {
- $mensagem='Informe o e-mail';
+ $mensagem="Informe o e-mail";
  header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=1");
  } elseif (trim($unidade) == '' OR !is_string($unidade)) {
  $mensagem='Informe a unidade';
@@ -96,9 +94,7 @@ if (isset ($_POST['id']))
  } elseif (trim($disciplina) == '' OR !is_string($disciplina)) {
  $mensagem='Informe a disciplina';
  header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=1"); 	
- 		
- 		
- 		
+ }		
  } else {
  //armazenando os dados em um arquivo
  }
@@ -106,7 +102,8 @@ if (isset ($_POST['id']))
  $mensagem='Informe os dados';
  header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=1");
  }
- */
+
+ 		*/
 
 
 
