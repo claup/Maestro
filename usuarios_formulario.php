@@ -52,7 +52,7 @@ if(!$id)
 			
 			$mensagem['sucesso'] = 'Registro inserido. Você já pode edita-lo.';
 			
-			header('location: usuarios_lista.php?mensagem='.$mensagem['sucesso']);
+			header('location: index.php?pagina=usuarios&mensagem='.$mensagem['sucesso']);
 			
 		}
 
@@ -95,43 +95,29 @@ else
 			mysqli_close($link);
 				
 			$mensagem['sucesso'] = 'Registro Editado.';
-			header('location: usuarios_lista.php?mensagem='.$mensagem['sucesso']);
+			header('location: index.php?pagina=usuarios&mensagem='.$mensagem['sucesso']);
 				
 		}
 
 	}else{
-		//Busco os dados do banco de dados
-		
-		$dados = array();
-	
 		
 		//Abrir Conexão
 		$link = mysqli_connect('localhost','root','');
 		$conexao = mysqli_select_db($link, 'maestro');
 
 		//Faz o Uso
-		//Atualizando os dados
-		$sql = "
-			select
-				*
-			from
-				usuarios
-			where
-				id_usuario = $id
-		";
+		//Buscar os dados
+		$sql = "select id_usuario, usuario, senha, nome from usuarios where	id_usuario = $id";
 				
 		$resultado = mysqli_query($link, $sql);
 
-		$row = mysql_affected_rows($resultado);
+		$row = mysqli_fetch_row($resultado);
 		
-		$usuario = $row['usuario'];
-		$senha = $row['senha'];
+		$usuario = $row[1];
+		$senha = $row[2];
 		
 		//Fechei a conexao
 		mysqli_close($link);
-		
-		
-		
 		
 	}
 }

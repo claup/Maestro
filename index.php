@@ -12,7 +12,11 @@ switch($pagina){
 	case 'professor': {include ('professor_lista.php'); break;}
 	case 'coordenador': {include ('coordenador_lista.php'); break;}
 	case 'sair': {include ('sair.php'); break;}
+		
 	case 'usuarios':{include ('usuarios_lista.php'); break;}
+	case 'usuarios_formulario':{include ('usuarios_formulario.php'); break;}
+	case 'usuarios_deletar':{include ('usuarios_lista.php'); break;}
+	
 	default:{include('dashboard.php');break;}
 	}
 	

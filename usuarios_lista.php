@@ -1,57 +1,38 @@
-<span><?=(isset($mensagem['sucesso'])) ? $mensagem['sucesso'] :'';?></span>
+<?php $mensagem = filter_input(INPUT_GET, 'mensagem', FILTER_SANITIZE_STRING);?>
+<span><?=(isset($mensagem)) ? $mensagem :'';?></span>
 <br/>
 
-<a href="usuarios_formulario.php" class="btn btn-success">Adicionar</a>
-					
-<table>
-	<tr>
-		<td>ID</td>
-		<td>Usuario</td>
-		<td>Senha</td>
-		<td>Situação</td>
-	</tr>
-	<?php
-	//escrever o processo de busca dos dados no arquivo
-	$ponteiroArquivo = fopen('arquivo_usuarios.txt', 'r');
-	
-	if($ponteiroArquivo){
-		//arquivo encontrado
-		
-		//ler arquivo
-		while(!feof($ponteiroArquivo)){
-			//obtem a linha e posiciona o ponteiro na proxima linha
-			$linha = fgets($ponteiroArquivo, 1024);
-			
-			//inicializa a variavel dados com vazio
-			$dados = array();
-			
-			//quebrar a string a cada ponto-virgula
-			$dados = explode(';', $linha);
-			
-			//imprimir a linha da tabela
-			?>
-			<tr>
-				<td><?php echo $dados[0];?></td>
-				<td><?php echo $dados[1];?></td>
-				<td><?php echo $dados[2];?></td>
-				<td>
-					<a href="usuarios_formulario.php?id=<?php echo $dados[0];?>" class="btn btn-primary">Editar</a>
-					<a href="usuario_deletar.php?id=<?php echo $dados[0];?>"  class="btn btn-danger">Deletar</a>
-				</td>
-				
-				
-			</tr>
-			<?php
-		}
-		
-	}else{
-		//arquivo não encontrado
-		?>
-		<tr>
-			<td colspan="4">Arquivo Vazio</td>
-		</tr>
-		<?php
-	}
-	
+<a href="index.php?pagina=usuarios_formulario" class="btn btn-success">Adicionar</a>
+<?php 
+//Abrir de conexão
+	$link = mysqli_connect('localhost', 'root','', 'maestro');
+
+//Fazer o uso
+	$query = 'SELECT * FROM usuarios';
+	$handle = mysqli_query($link, $query);
 	?>
-</table>
+	<table>
+		<tr>
+			<td>ID</td>
+			<td>Nome</td>
+			<td>Usuário</td>
+			<td>Situação</td>
+		</tr>
+		<?php while($row = mysqli_fetch_assoc($handle)){ ?>
+		<tr>
+			<td><?php echo $row['id_usuario'];?></td>
+			<td><?php echo $row['nome'];?></td>
+			<td><?php echo $row['usuario'];?></td>
+			<td>
+				<a href="index.php?pagina=usuarios_formulario&id=<?php echo $row['id_usuario'];?>" class="btn btn-primary">Editar</a>
+				<a href="index.php?pagina=usuarios_deletar&id=<?php echo $row['id_usuario'];?>"  class="btn btn-danger">Deletar</a>
+			</td>
+		</tr>
+		<?php } ?>
+		
+	</table>
+
+<?php
+//Fechar conexão
+	mysqli_close($link);
+?>
