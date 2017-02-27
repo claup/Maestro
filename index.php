@@ -11,6 +11,9 @@ switch($pagina){
 	case 'aluno': {include ('aluno_lista.php'); break;}
 	case 'professor': {include ('professor_lista.php'); break;}
 	case 'coordenador': {include ('coordenador_lista.php'); break;}
+	case 'usuario': {include ('usuario_lista.php'); break;}
+	case 'curso': {include ('curso_lista.php'); break;}
+	case 'matricula': {include ('matricula_lista.php'); break;}
 	case 'sair': {include ('sair.php'); break;}
 		
 	case 'usuarios':{include ('usuarios_lista.php'); break;}

@@ -4,6 +4,7 @@ $nome=filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
 $email=filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
 $unidade=filter_input(INPUT_POST, 'unidade', FILTER_SANITIZE_STRING);
 $disciplina=filter_input(INPUT_POST, 'disciplina', FILTER_SANITIZE_STRING);
+
 if(!$id){
 	$mensagem='Informe o id';
 	header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=0");
@@ -19,8 +20,6 @@ if(!$id){
 }elseif(!$disciplina){
 	$mensagem='Informe a disciplina';
 	header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=0");
-
-
 
 }else{
 	$buffer = array ();
@@ -49,7 +48,7 @@ if(!$id){
 	//fechar arquivo
 	fclose ( $ponteiroArquivo1 );
 
-	$mensagem = 'Edição realizada com sucesso';
+	$mensagem = 'EdiÃ§ao realizada com sucesso';
 	header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=0");
 }
 ?>

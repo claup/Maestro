@@ -1,13 +1,17 @@
 <?php
 //Captura as variaveis
 //$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
-//$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
+//$id = isset($_REQUEST['id_matricula']) ? $_REQUEST['id_matricula'] : '';
 
-$id = isset($_POST['id_usuario']) ? filter_input(INPUT_POST, 'id_usuario', FILTER_VALIDATE_INT) : filter_input(INPUT_GET, 'id_usuario', FILTER_VALIDATE_INT);
-
-$usuario = filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_STRING);
-
-$senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
+$id_matricula = isset($_POST['id_matricula']) ? filter_input(INPUT_POST, 'id_matricula', FILTER_VALIDATE_INT) : filter_input(INPUT_GET, 'id_matricula', FILTER_VALIDATE_INT);
+$id_aluno = filter_input(INPUT_POST, 'id_aluno', FILTER_SANITIZE_STRING);
+$cpf = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_STRING);
+$endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
+$telefone = filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_STRING);
+$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+$data_nascimento = filter_input(INPUT_POST, 'data_nascimento', FILTER_SANITIZE_STRING);
+$responsavel = filter_input(INPUT_POST, 'responsavel', FILTER_SANITIZE_STRING);
+$curso = filter_input(INPUT_POST, 'curso', FILTER_SANITIZE_STRING);
 
 $salvar = filter_input(INPUT_POST, 'salvar', FILTER_VALIDATE_INT);
 

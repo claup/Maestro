@@ -1,24 +1,28 @@
 <?php
+
 //Captura as variaveis
 //$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 //$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
 
-$id = isset($_POST['id_usuario']) ? filter_input(INPUT_POST, 'id_usuario', FILTER_VALIDATE_INT) : filter_input(INPUT_GET, 'id_usuario', FILTER_VALIDATE_INT);
+$id_curso = isset($_POST['id_curso']) ? filter_input(INPUT_POST, 'id_curso', FILTER_VALIDATE_INT) : filter_input(INPUT_GET, 'id_curso', FILTER_VALIDATE_INT);
 
-$usuario = filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_STRING);
+$curso = filter_input(INPUT_POST, 'curso', FILTER_SANITIZE_STRING);
 
-$senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
+$carga_horaria = filter_input(INPUT_POST, 'carga_horaria', FILTER_SANITIZE_STRING);
 
-$salvar = filter_input(INPUT_POST, 'salvar', FILTER_VALIDATE_INT);
+$data_inicio = filter_input(INPUT_POST, 'data_inicio', FILTER_VALIDATE_INT);
 
+$data_fim = filter_input(INPUT_POST, 'data_fim', FILTER_VALIDATE_INT);
+
+$professor = filter_input(INPUT_POST, 'professor', FILTER_VALIDATE_INT);
 
 if(!$id)
 {
 	//CRIAR
-	
+
 	if($salvar){
 
-			//Salvo os dados no arquivo
+		//Salvo os dados no arquivo
 		//Verificando o preenchimento
 
 		if(!$usuario){
@@ -26,10 +30,10 @@ if(!$id)
 
 		}elseif(!$senha){
 			$mensagem['senha'] = 'Preencha a senha';
-		
+
 		}else{
-			
-			
+				
+				
 			//Abrir Conexão
 			$link = mysqli_connect('localhost','root','');
 			$conexao = mysqli_select_db($link, 'maestro');
@@ -37,36 +41,38 @@ if(!$id)
 			//Faz o Uso
 			//Inserindo os dados
 			$sql = " insert into usuarios
-					(
-						id_usuario, 
-						nome, 
-						usuario, 
-						senha
-					) 
-					values 
-					(	
-						null,
-						'$usuario', 
-						'@',
-						'$senha'
-					)";
-					
+			(
+			id_curso,
+			curso,
+			carga_horaria,
+			data_inicio,
+			data_fim,
+			professor
+			)
+			values
+			(
+			null,
+			'$usuario',
+			'@',
+			'$senha'
+			)";
+				
 			$resultado = mysqli_query($link, $sql);
 
 			//Fechei a conexao
 			mysqli_close($link);
+
 				
-			
-			
+				
 			$mensagem['sucesso'] = 'Registro inserido. Você já pode edita-lo.';
-			
-			header('location: index.php?pagina=usuarios&mensagem='.$mensagem['sucesso']);
-			
+				
+			header('location: index.php?pagina=curso&mensagem='.$mensagem['sucesso']);
+				
 		}
 
 	}
-	
-	
+
+
 }
 else
 {
@@ -79,7 +85,7 @@ else
 		}elseif(!$senha){
 			$mensagem['senha'] = 'Preencha a senha';
 		}else{
-				
+
 			//Abrir Conexão
 			$link = mysqli_connect('localhost','root','');
 			$conexao = mysqli_select_db($link, 'maestro');
@@ -87,46 +93,49 @@ else
 			//Faz o Uso
 			//Atualizando os dados
 			$sql = "
-				update usuarios
-				set
-					usuario = '$usuario',
-					nome = '$usuario',
-					senha = '$senha'
-				
-				where
-					id_usuario = $id
+			update usuarios
+			set
+			id_curso = '$id_curso',
+			curso = '$nome',
+			carga_horaria = '$carga_horaria ',
+			data_inicio = '$data_inicio', 
+			data_fim = '$data_fim',
+			professor = '$professor',
+
+			where
+			id_curso = $id_curso
 			";
-					
+				
 			$resultado = mysqli_query($link, $sql);
 
 			//Fechei a conexao
 			mysqli_close($link);
-				
+
 			$mensagem['sucesso'] = 'Registro Editado.';
-			header('location: index.php?pagina=usuarios&mensagem='.$mensagem['sucesso']);
-				
+			header('location: index.php?pagina=curso&mensagem='.$mensagem['sucesso']);
+
 		}
 
 	}else{
-		
+
 		//Abrir Conexão
 		$link = mysqli_connect('localhost','root','');
 		$conexao = mysqli_select_db($link, 'maestro');
 
 		//Faz o Uso
 		//Buscar os dados
-		$sql = "select id_usuario, usuario, senha, nome from usuarios where	id_usuario = $id";
-				
+		$sql = "select id_curso, curso, carga_horaria, data_inicio, data_fim, professor from usuarios where	id_curso = $id_curso";
+
 		$resultado = mysqli_query($link, $sql);
 
 		$row = mysqli_fetch_row($resultado);
-		
+
 		$usuario = $row[1];
 		$senha = $row[2];
-		
+
 		//Fechei a conexao
 		mysqli_close($link);
-		
+
 	}
 }
 ?>
@@ -136,8 +145,8 @@ else
 	
 	<input type="hidden" name="id" value="<?php echo $id;?>" />
 	
-	<label>Usuário</label>
-	<input type="text" name="usuario" value="<?php echo $usuario;?>" />
+	<label>Curso</label>
+	<input type="text" name="curso" value="<?php echo $usuario;?>" />
 	<span><?=(isset($mensagem['usuario'])) ? $mensagem['usuario'] : '';?></span>
 	<br/>
 	<label>Senha</label>

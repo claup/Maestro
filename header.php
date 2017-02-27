@@ -40,12 +40,21 @@
 	href="index.php?pagina=coordenador&formulario=0">Coordenadores</a></li>
 
 	<li role="presentation"
+	class="<?=(isset($_GET['pagina']) && $_GET['pagina'] == 'usuarios')? 'active':''; ?>"><a
+	href="index.php?pagina=usuarios&formulario=0">Usuarios</a></li>
+	
+	<li role="presentation"
+	class="<?=(isset($_GET['pagina']) && $_GET['pagina'] == 'curso')? 'active':''; ?>"><a
+	href="index.php?pagina=curso&formulario=0">Curso</a></li>
+	
+	<li role="presentation"
+	class="<?=(isset($_GET['matricula']) && $_GET['pagina'] == 'matricula')? 'active':''; ?>"><a
+	href="index.php?pagina=matricula&formulario=0">Matriculas</a></li>
+	
+	<li role="presentation"
 	class="<?=(isset($_GET['pagina']) && $_GET['pagina'] == 'sair')? 'active':''; ?>"><a
 	href="index.php?pagina=sair">Sair</a></li>
 
-<li role="presentation"
-	class="<?=(isset($_GET['pagina']) && $_GET['pagina'] == 'usuarios')? 'active':''; ?>"><a
-	href="index.php?pagina=usuarios">Sair</a></li>
 
 	</ul>
 	</div>
