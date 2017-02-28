@@ -20,7 +20,7 @@ if(!$id){
 	$mensagem='Informe o e-mail';
 	header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=1");
 }elseif(!$unidade){
-	$mensagem='Informe a unidade;
+	$mensagem='Informe a unidade';
 	header("location:/maestro/professor_lista.php?msg=$mensagem&menu=professor&formulario=1");
 }elseif(!$disciplina){
 	$mensagem='Informe a disciplina';

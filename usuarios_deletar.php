@@ -34,17 +34,17 @@ if($id){
 		
 		
 		<form method="post">
-			<p> VocÃª tem certeza que deseja excluir este registro? </p>
+			<p> Voce tem certeza que deseja excluir este registro? </p>
 			
 			<button name="delete" type="submit" value="1" class="btn btn-danger">Sim</button>
-			<a href="index.php?pagina=usuarios" class="btn btn-default">NÃ£o</a>
+			<a href="index.php?pagina=usuarios" class="btn btn-default">NÃO</a>
 			
 		</form>
 	<?php }else{?>
-		<p> Registro nÃ£o encontrado</p>
+		<p> Registro nÃo encontrado</p>
 		<a href="usuarios_lista.php">Retornar para a Lista</a>
 	<?php } ?>
 	
 <?php }else{ ?>
-	<p> Informe um registro para avaliar a deleÃ§Ã£o.</p>
+	<p> Informe um registro para avaliar a deleçao.</p>
 <?php } ?>

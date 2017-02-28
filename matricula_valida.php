@@ -2,7 +2,7 @@
 
 $id_matricula = isset($_POST['id_matricula']) ? filter_input(INPUT_POST, 'id_matricula', FILTER_VALIDATE_INT) : filter_input(INPUT_GET, 'id_matricula', FILTER_VALIDATE_INT);
 
-$id_aluno = filter_input(INPUT_POST, 'id_aluno', FILTER_SANITIZE_STRING);
+$nome_aluno = filter_input(INPUT_POST, 'nome_aluno', FILTER_SANITIZE_STRING);
 
 $cpf = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_STRING);
 
@@ -25,7 +25,7 @@ if(!$id_matricula){
 	$mensagem='Informe o id da matricula'; //matricula tem auto incremento?
 	header("location:/maestro/matricula_lista.php?msg=$mensagem&menu=matriculao&formulario=0");
 
-}elseif(!$aluno){
+}elseif(!$nome_aluno){
 	$mensagem='Informe o aluno';
 	header("location:/maestro/aluno_lista.php?msg=$mensagem&menu=aluno&formulario=0");
 
@@ -65,7 +65,7 @@ if(!$id_matricula){
 
 	$arquivo = array();
 	$fd = fopen ("arquivo_curso.txt", "a");
-	fwrite	($fd, "\n$id_matricula; $aluno; $cpf; $endereco; $telefone; $email; $data_nascimento; $responsavel; $curso");
+	fwrite	($fd, "\n$id_matricula; $nome_aluno; $cpf; $endereco; $telefone; $email; $data_nascimento; $responsavel; $curso");
 	fclose ($fd);
 
 	$mensagem = 'Matricula realizada com sucesso';

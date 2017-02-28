@@ -14,8 +14,8 @@
 
 <div class="row">
 	<form action="index.php?pagina=sair" method="post">
-		<h1> Você deseja realmente sair? </h1>
+		<h1> Voce deseja realmente sair? </h1>
 		<button type="submit" class="btn btn-default" name="sair" value="1">SIM</button>
-		<a href="index.php?pagina=dashboard" class="btn btn-default">NÃO</a>
+		<a href="index.php?pagina=dashboard" class="btn btn-default">N�O</a>
 	</form>
 </div>

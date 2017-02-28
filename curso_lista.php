@@ -1,3 +1,8 @@
+<?php
+ $mensagem = filter_input(INPUT_GET, 'mensagem', FILTER_SANITIZE_STRING);?>
+<span><?=(isset($mensagem)) ? $mensagem :'';?></span>
+<br/>
+
 
 <div class="row">
 <h1>Curso</h1>
@@ -9,59 +14,73 @@
 </div>
 
 <?php if (isset($_GET ['formulario']) && $_GET ['formulario']==0 ) { ?>
-				<div class="row">
-			<a href="curso_lista.php?menu=curso&formulario=1"
-				class="btn btn-success">Adicionar</a>
+		<div class="row">
+		<a href="curso_lista.php?menu=curso&formulario=1"
+			class="btn btn-success">Adicionar</a>
 			
+		<?php
+		// Exibir as mensagens de retorno.
+			$msg = filter_input ( INPUT_GET, 'msg', FILTER_SANITIZE_STRING );
+			if (isset ( $_GET ['msg'] )) {
+			echo $_GET ['msg'];
+			}
+			?>		
+		
 			<?php
-				// Exibir as mensagens de retorno.
-				$msg = filter_input ( INPUT_GET, 'msg', FILTER_SANITIZE_STRING );
-				if (isset ( $_GET ['msg'] )) {
-					echo $_GET ['msg'];
-				}
-				?>		
-		
-		
-					<?php
-				// escrever o processo de busca de dados no arquivo.
-				$ponteiroArquivo = fopen ( 'arquivo_curso.txt', 'r' );
+			// escrever o processo de busca de dados no arquivo.
+			$ponteiroArquivo = fopen ( 'arquivo_curso.txt', 'r' );
 				
-				if ($ponteiroArquivo) {
-					?>
-					<table class="table table-striped table-bordered table-hover">
-				<tr>
-					<td>id_curso</td>
-					<td>curso</td>
-					<td>carga horaria</td>
-					<td>data_inicio</td>
-					<td>data_fim</td>
-					<td>professor</td>
-				</tr>
+			if ($ponteiroArquivo) {
+			?>
+			<table class="table table-striped table-bordered table-hover">
+			<tr>
+			<td>id_curso</td>
+			<td>curso</td>
+			<td>carga horaria</td>
+			<td>data_inicio</td>
+			<td>data_fim</td>
+			<td>professor</td>
+			<td>acoes</td>
+			</tr>
 											
-					<?php
-					// percorrer o arquivo.
-					while (! feof ( $ponteiroArquivo )) {
-						$linha = fgets ( $ponteiroArquivo, 1024 );
-						$dados = explode ( ';', $linha );
-						?>
-						<tr>
-					<td><?=$dados[0];?></td>
-					<td><?=$dados[1];?></td>
-					<td><?=$dados[2];?></td>
-					<td><?=$dados[3];?></td>
-					<td><?=$dados[4];?></td>
-					<td><?=$dados[5];?></td>
-					<td><a
-						href="curso_lista.php?menu=curso&formulario=1&id=<?=$dados[0];?>"
-						class="btn btn-info">Editar</a> <a
-						href="curso_deleta.php?id=<?=$dados[0];?>" class="btn btn-danger">Deletar</a></td>
-				</tr>
-					<?php
-					}
-					?>
-						</table>
-					<?php } ?>
-				</div>
+			<?php
+			// percorrer o arquivo.
+			while (! feof ( $ponteiroArquivo )) {
+			$linha = fgets ( $ponteiroArquivo, 1024 );
+			$dados = explode ( ';', $linha );
+			if($dados[0] != ''){
+			?>
+			<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><a href="#" class="btn btn-info">Editar</a> <a href="#"
+					class="btn btn-danger">Deletar</a></td>
+			</tr>
+							
+			<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><a href="#" class="btn btn-info">Editar</a> <a href="#"
+					class="btn btn-danger">Deletar</a></td>
+			</tr>
+								
+								
+			<?php } ?>
+						
+			<?php
+			}
+			?>
+			</table>
+			<?php } ?>
+			</div>
 			<?php }else{ ?>
 			<?= (isset($_GET['msg']))?$_GET['msg']:''?>
 			

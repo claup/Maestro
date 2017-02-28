@@ -1,7 +1,7 @@
 <?php
 
 $id_matricula = isset($_POST['id_matricula']) ? filter_input(INPUT_POST, 'id_matricula', FILTER_VALIDATE_INT) : filter_input(INPUT_GET, 'id_matricula', FILTER_VALIDATE_INT);
-$id_aluno = filter_input(INPUT_POST, 'id_aluno', FILTER_SANITIZE_STRING);
+$nome_aluno = filter_input(INPUT_POST, '$nome_aluno', FILTER_SANITIZE_STRING);
 $cpf = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_STRING);
 $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
 $telefone = filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_STRING);
@@ -64,7 +64,7 @@ if(!$id_matricula){
 		if ($linhaAtual[0] != $id) {
 			$buffer[] = $linha;
 		}else{
-			$buffer[] = "$id_matricula; $aluno; $cpf; $endereco; $telefone; $email; $data_nascimento; $responsavel; $curso";
+			$buffer[] = "$id_matricula; $nome_aluno; $cpf; $endereco; $telefone; $email; $data_nascimento; $responsavel; $curso";
 		}
 	}
 
